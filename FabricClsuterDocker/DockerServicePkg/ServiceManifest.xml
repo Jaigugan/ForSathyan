@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceManifest Name="DockerServicePkg" Version="1.0.0"
+                 xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+   <ServiceTypes>
+      <StatelessServiceType ServiceTypeName="DockerServiceType" UseImplicitHost="true">
+   </StatelessServiceType>
+   </ServiceTypes>
+   
+   <CodePackage Name="code" Version="1.0.0">
+      <EntryPoint>
+         <ContainerHost>
+            <ImageName>splunk/splunk</ImageName>
+            <Commands>docker run -d -e —hostname Splunk —name Splunk SPLUNK_START_ARGS=--accept-license&#34; -e &#34;SPLUNK_USER=root&#34; -p &#34;8005:8000&#34; splunk/splunk</Commands>
+         </ContainerHost>
+      </EntryPoint>
+      <EnvironmentVariables> 
+      </EnvironmentVariables> 
+   </CodePackage>
+ </ServiceManifest>
